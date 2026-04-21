@@ -1,0 +1,21 @@
+C:\Users\saksh\maakalisonkundgpm.org_new\server\node_modules\mysql2\promise.js:32
+      const createConnectionErr = new Error();
+                                  ^
+
+Error
+    at Connection.<anonymous> (C:\Users\saksh\maakalisonkundgpm.org_new\server\node_modules\mysql2\promise.js:32:35)
+    at Object.onceWrapper (node:events:623:26)
+    at Connection.emit (node:events:508:28)
+    at Connection._notifyError (C:\Users\saksh\maakalisonkundgpm.org_new\server\node_modules\mysql2\lib\base\connection.js:291:12)
+    at Connection._handleFatalError (C:\Users\saksh\maakalisonkundgpm.org_new\server\node_modules\mysql2\lib\base\connection.js:222:10)
+    at Connection._handleNetworkError (C:\Users\saksh\maakalisonkundgpm.org_new\server\node_modules\mysql2\lib\base\connection.js:235:10)
+    at Socket.emit (node:events:508:28)
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'ECONNREFUSED',
+  errno: undefined,
+  sqlState: undefined
+}
+
+Node.js v24.8.0

@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #8b0000;
+  --gold-color: #ffd700;
+  --bg-soft: #cae4f5;
+  --bg-alt: #f1d89e;
+  --card-bg: #e2b1b1;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 215, 0, 0.2), transparent 20%),
+    radial-gradient(circle at top left, rgba(255, 140, 0, 0.12), transparent 24%),
+    linear-gradient(180deg, #fff8e1 0%, #fff4d8 48%, #fff8e1 100%);
+  color: var(--text-primary);
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  scroll-margin-top: 96px;
+}
+
+@layer components {
+  .nav-link-item {
+    @apply relative rounded-xl px-4 py-2 text-sm font-medium text-temple-text transition-all duration-300 hover:text-temple-maroon lg:text-base;
+  }
+
+  .nav-link-item::after {
+    content: "";
+    @apply absolute bottom-0 left-4 right-4 h-0.5 origin-center scale-x-0 rounded-full bg-temple-maroon transition-transform duration-300;
+  }
+
+  .nav-link-item:hover::after,
+  .nav-link-active::after {
+    @apply scale-x-100;
+  }
+
+  .nav-link-active {
+    @apply text-temple-maroon;
+  }
+
+  .hero-section {
+    @apply relative flex min-h-[680px] items-center overflow-hidden;
+    min-height: calc(100svh - 74px);
+  }
+
+  .hero-slide {
+    @apply absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-700;
+  }
+
+  .hero-slide-active {
+    @apply opacity-100;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-black/30;
+  }
+
+  .hero-gradient {
+    @apply absolute inset-0;
+    background:
+      linear-gradient(rgba(255, 140, 0, 0.3), rgba(139, 0, 0, 0.4)),
+      linear-gradient(90deg, rgba(255, 248, 225, 0.1) 0%, rgba(255, 248, 225, 0) 60%);
+  }
+
+  .hero-content {
+    @apply relative z-10 px-4;
+  }
+
+  .hero-eyebrow {
+    @apply inline-flex rounded-full border border-white/40 bg-white/25 px-4 py-2 font-hindi text-sm font-semibold tracking-[0.2em] text-white shadow-md backdrop-blur-md;
+  }
+
+  .hero-title {
+    @apply mt-6 max-w-3xl font-display text-5xl font-bold leading-[1.02] text-white md:text-7xl;
+    text-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.18),
+      0 0 28px rgba(255, 215, 0, 0.24);
+  }
+
+  .hero-copy {
+    @apply mt-6 max-w-2xl font-hindi text-lg leading-8 text-white md:text-xl;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  }
+
+  .hero-side-note {
+    @apply rounded-[2rem] border border-white/35 bg-white/20 p-6 shadow-glow backdrop-blur-lg;
+  }
+
+  .section-heading {
+    @apply mb-12 text-center font-display text-4xl font-bold text-temple-maroon;
+  }
+
+  .section-heading-left {
+    @apply mb-6 font-display text-4xl font-bold text-temple-maroon;
+  }
+
+  .sub-heading {
+    @apply mb-8 font-display text-2xl font-semibold text-temple-maroon md:text-3xl;
+  }
+
+  .section-kicker {
+    @apply inline-flex text-sm font-semibold uppercase tracking-[0.22em] text-[#b45309];
+  }
+
+  .section-copy {
+    @apply font-hindi text-lg leading-8 text-temple-muted;
+  }
+
+  .section-shell {
+    @apply rounded-[2rem] border border-[#f3dec0] bg-white/70 p-6 shadow-temple backdrop-blur-md md:p-10;
+  }
+
+  .temple-btn {
+    @apply rounded-xl px-8 py-4 font-hindi text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-glow;
+    background-image: linear-gradient(to right, #8b0000, #d97706, #ffd700);
+    animation: templePulse 2.8s ease-in-out infinite;
+  }
+
+  .temple-btn-secondary {
+    @apply rounded-xl border border-white/40 bg-white/20 px-8 py-4 font-hindi text-lg font-semibold text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white/30;
+  }
+
+  .announcement-banner {
+    background:
+      radial-gradient(circle at top right, rgba(203, 129, 118, 0.17), transparent 24%),
+      linear-gradient(135deg, #fff1c9 0%, #ffe5a9 48%, #fff3d6 100%);
+  }
+
+  .navratri-container {
+    @apply flex flex-col gap-4;
+  }
+
+  .navratri-card {
+    @apply w-full rounded-2xl bg-white px-5 py-5 text-left font-hindi text-lg font-semibold text-temple-maroon shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+  }
+
+  .navratri-card-dark {
+    @apply border border-[#f2d39d] bg-white/90;
+  }
+
+  .service-panel {
+    @apply rounded-[1.75rem] border border-white/50 bg-white/70 p-8 shadow-md backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+    box-shadow:
+      0 20px 40px rgba(110, 62, 23, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  .service-row {
+    @apply flex items-center gap-4 rounded-xl bg-[#FFF3D6] p-4 shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+
+  .service-icon {
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/60 bg-gradient-to-br from-[#8b0000] to-[#b45309] font-hindi text-sm font-bold text-white shadow-md;
+  }
+
+  .service-thumb {
+    @apply h-12 w-12 shrink-0 rounded-full object-cover shadow;
+  }
+
+  .sanskar-card {
+    @apply flex flex-col overflow-hidden rounded-2xl border border-white/50 bg-white/75 shadow-md backdrop-blur-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl sm:flex-row;
+  }
+
+  .event-card {
+    @apply overflow-hidden rounded-xl border border-[#edd8b6] bg-white shadow-md transition-all duration-300 hover:shadow-lg;
+  }
+
+  .about-text {
+    @apply mb-4 font-hindi text-lg leading-8 text-temple-text;
+  }
+
+  .donation-section {
+    @apply py-16;
+    background-image:
+      linear-gradient(rgba(255, 140, 0, 0.32), rgba(139, 0, 0, 0.42)),
+      url("/assets/images/photogalery/IMG-20211109-WA0007.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .contact-section {
+    background: linear-gradient(180deg, #fff3d6 0%, #fff8e1 100%);
+  }
+
+  .contact-card {
+    @apply mx-auto max-w-4xl rounded-2xl bg-white/90 p-8 shadow-xl backdrop-blur-sm;
+  }
+
+  .form-label {
+    @apply mb-2 block font-medium text-temple-text;
+  }
+
+  .form-field {
+    @apply w-full rounded-xl border border-[#ead5b3] bg-white px-4 py-3 text-temple-text outline-none transition-all duration-300 focus:border-[#f59e0b] focus:ring-2 focus:ring-[#fcd34d]/40;
+  }
+
+  .submit-button {
+    @apply rounded-xl px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105;
+    background-image: linear-gradient(45deg, #8b0000, #d97706, #ffd700);
+  }
+
+  .footer-text {
+    @apply mb-2 font-hindi text-base text-temple-muted;
+  }
+
+  .footer-link {
+    @apply text-temple-muted transition-all duration-300 hover:text-temple-maroon;
+  }
+
+  .floating-btn {
+    @apply fixed z-40 flex items-center justify-center rounded-full text-base font-bold text-white shadow-xl transition-all duration-300 hover:scale-105;
+  }
+
+  .donate-float {
+    @apply bottom-6 right-5 h-16 w-16 font-hindi text-sm;
+    background-image: linear-gradient(135deg, #8b0000, #d97706, #ffd700);
+    animation: templeHeartbeat 1.8s ease-in-out infinite;
+  }
+
+  .whatsapp-float {
+    @apply bottom-6 left-6 h-16 w-16 rounded-full bg-green-500 shadow-xl transition-all duration-300 hover:scale-110;
+    animation: templeBounce 2.4s ease-in-out infinite;
+  }
+
+  .whatsapp-logo {
+    @apply h-8 w-8;
+  }
+
+  .whatsapp-fallback {
+    @apply text-sm font-extrabold uppercase tracking-wide text-white;
+  }
+
+  .feature-card {
+    @apply rounded-2xl border border-white/70 bg-white/90 p-6 shadow-md backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:shadow-xl;
+  }
+
+  .feature-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.24em] text-[#b45309];
+  }
+
+  .feature-title {
+    @apply mt-3 font-display text-2xl font-semibold text-temple-maroon;
+  }
+
+  .feature-copy {
+    @apply mt-3 font-hindi text-base leading-7 text-temple-muted;
+  }
+
+  .services-section {
+    background:
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.7), transparent 22%),
+      linear-gradient(180deg, rgba(255, 243, 214, 0.5) 0%, rgba(255, 248, 234, 0.86) 100%);
+  }
+
+  .service-shell {
+    @apply border-white/55 bg-white/50 backdrop-blur-2xl;
+    box-shadow:
+      0 24px 60px rgba(123, 63, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  }
+
+  .service-copy {
+    color: #5f4a33;
+  }
+
+  .service-panel .sub-heading,
+  .service-row span:last-child {
+    color: #5a1905;
+  }
+}
+
+@keyframes templePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 26px rgba(139, 0, 0, 0.22);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 16px 38px rgba(255, 215, 0, 0.32);
+  }
+}
+
+@keyframes templeHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(0.98);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes templeBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-heading,
+  .section-heading-left {
+    @apply text-3xl;
+  }
+
+  .hero-section {
+    min-height: 620px;
+  }
+
+  .hero-title {
+    @apply text-4xl;
+  }
+
+  .navratri-card {
+    @apply text-base;
+  }
+}
