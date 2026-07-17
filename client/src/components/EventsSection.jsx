@@ -1,9 +1,51 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getEvents } from "../admin/Services/eventService";
 import { eventsContent, navratriLinks } from "../content";
+import { resolveMediaUrl } from "../utils/media";
+
+const fallbackEvents = eventsContent.map((event) => ({
+  id: event.title,
+  title: event.title,
+  image: event.image,
+  description: "",
+  type: event.type,
+}));
 
 export default function EventsSection({
   showAnnouncement = true,
   showCards = true,
 }) {
+  const [events, setEvents] = useState(fallbackEvents);
+
+  useEffect(() => {
+    if (!showCards) {
+      return undefined;
+    }
+
+    let active = true;
+
+    async function loadEvents() {
+      try {
+        const rows = await getEvents();
+
+        if (!active || !Array.isArray(rows) || rows.length === 0) {
+          return;
+        }
+
+        setEvents(rows);
+      } catch (error) {
+        console.error("Failed to load homepage events", error);
+      }
+    }
+
+    loadEvents();
+
+    return () => {
+      active = false;
+    };
+  }, [showCards]);
+
   return (
     <>
       {showAnnouncement ? (
@@ -22,15 +64,13 @@ export default function EventsSection({
               </div>
               <div className="navratri-container mt-8 grid gap-4 md:grid-cols-3 md:items-stretch">
                 {navratriLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
-                    href={link.href}
+                    to={link.href}
                     className="navratri-card navratri-card-dark"
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -51,11 +91,11 @@ export default function EventsSection({
                 </p>
               </div>
               <div className="mt-8 grid gap-6 md:grid-cols-2">
-                {eventsContent.map((event) => (
-                  <article key={event.title} className="event-card group">
+                {events.map((event) => (
+                  <article key={event.id || event.title} className="event-card group">
                     <div className="overflow-hidden">
                       <img
-                        src={event.image}
+                        src={resolveMediaUrl(event.image)}
                         alt={event.title}
                         className="h-48 w-full object-cover transition duration-700 group-hover:scale-105"
                       />
@@ -66,17 +106,17 @@ export default function EventsSection({
                         {event.title}
                       </h5>
                       <p className="font-display text-base leading-7 text-slate-600">
-                        स्थापना सूची देखें, सहभागिता करें और आयोजन से जुड़ी आवश्यक
-                        जानकारी प्राप्त करें।
+                        {event.description || "Temple event details and participation updates are available on the event page."}
                       </p>
-                      <a
-                        className="temple-btn inline-flex"
-                        href={`/api/navratri?type=${event.type}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        सूची देखें
-                      </a>
+                      {event.type ? (
+                        <Link className="temple-btn inline-flex" to={`/navratri/${event.type}`}>
+                          सूची देखें
+                        </Link>
+                      ) : (
+                        <Link className="temple-btn inline-flex" to="/events">
+                          View Event
+                        </Link>
+                      )}
                     </div>
                   </article>
                 ))}

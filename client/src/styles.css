@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #8b0000;
-  --gold-color: #ffd700;
-  --bg-soft: #cae4f5;
-  --bg-alt: #f1d89e;
-  --card-bg: #e2b1b1;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
+  --primary-color: #7a1e1e;
+  --gold-color: #e2b95b;
+  --bg-soft: #fff8ed;
+  --bg-alt: #faecd0;
+  --card-bg: #f6e3cf;
+  --text-primary: #2f241c;
+  --text-secondary: #7a6654;
 }
 
 html {
@@ -20,9 +20,9 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top right, rgba(255, 215, 0, 0.2), transparent 20%),
-    radial-gradient(circle at top left, rgba(255, 140, 0, 0.12), transparent 24%),
-    linear-gradient(180deg, #fff8e1 0%, #fff4d8 48%, #fff8e1 100%);
+    radial-gradient(circle at top right, rgba(226, 185, 91, 0.2), transparent 20%),
+    radial-gradient(circle at top left, rgba(200, 107, 22, 0.1), transparent 24%),
+    linear-gradient(180deg, #fff9ef 0%, #faf1de 48%, #fff9ef 100%);
   color: var(--text-primary);
 }
 
@@ -73,7 +73,7 @@ section {
   .hero-gradient {
     @apply absolute inset-0;
     background:
-      linear-gradient(rgba(255, 140, 0, 0.3), rgba(139, 0, 0, 0.4)),
+      linear-gradient(rgba(200, 107, 22, 0.28), rgba(122, 30, 30, 0.42)),
       linear-gradient(90deg, rgba(255, 248, 225, 0.1) 0%, rgba(255, 248, 225, 0) 60%);
   }
 
@@ -114,7 +114,7 @@ section {
   }
 
   .section-kicker {
-    @apply inline-flex text-sm font-semibold uppercase tracking-[0.22em] text-[#b45309];
+    @apply inline-flex text-sm font-semibold uppercase tracking-[0.22em] text-[#a45a1f];
   }
 
   .section-copy {
@@ -122,12 +122,12 @@ section {
   }
 
   .section-shell {
-    @apply rounded-[2rem] border border-[#f3dec0] bg-white/70 p-6 shadow-temple backdrop-blur-md md:p-10;
+    @apply rounded-[2rem] border border-[#ead7b8] bg-white/70 p-6 shadow-temple backdrop-blur-md md:p-10;
   }
 
   .temple-btn {
     @apply rounded-xl px-8 py-4 font-hindi text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-glow;
-    background-image: linear-gradient(to right, #8b0000, #d97706, #ffd700);
+    background-image: linear-gradient(to right, #7a1e1e, #c86b16, #e2b95b);
     animation: templePulse 2.8s ease-in-out infinite;
   }
 
@@ -137,8 +137,8 @@ section {
 
   .announcement-banner {
     background:
-      radial-gradient(circle at top right, rgba(203, 129, 118, 0.17), transparent 24%),
-      linear-gradient(135deg, #fff1c9 0%, #ffe5a9 48%, #fff3d6 100%);
+      radial-gradient(circle at top right, rgba(180, 115, 82, 0.14), transparent 24%),
+      linear-gradient(135deg, #fff4df 0%, #f8e4bc 48%, #faefdc 100%);
   }
 
   .navratri-container {
@@ -161,11 +161,11 @@ section {
   }
 
   .service-row {
-    @apply flex items-center gap-4 rounded-xl bg-[#FFF3D6] p-4 shadow-sm transition-all duration-300 hover:shadow-md;
+    @apply flex items-center gap-4 rounded-xl bg-[#FDF0DB] p-4 shadow-sm transition-all duration-300 hover:shadow-md;
   }
 
   .service-icon {
-    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/60 bg-gradient-to-br from-[#8b0000] to-[#b45309] font-hindi text-sm font-bold text-white shadow-md;
+    @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/60 bg-gradient-to-br from-[#7a1e1e] to-[#a45a1f] font-hindi text-sm font-bold text-white shadow-md;
   }
 
   .service-thumb {
@@ -177,7 +177,7 @@ section {
   }
 
   .event-card {
-    @apply overflow-hidden rounded-xl border border-[#edd8b6] bg-white shadow-md transition-all duration-300 hover:shadow-lg;
+    @apply overflow-hidden rounded-xl border border-[#e7d3b4] bg-white shadow-md transition-all duration-300 hover:shadow-lg;
   }
 
   .about-text {
@@ -187,7 +187,7 @@ section {
   .donation-section {
     @apply py-16;
     background-image:
-      linear-gradient(rgba(255, 140, 0, 0.32), rgba(139, 0, 0, 0.42)),
+      linear-gradient(rgba(200, 107, 22, 0.3), rgba(122, 30, 30, 0.44)),
       url("/assets/images/photogalery/IMG-20211109-WA0007.jpg");
     background-position: center;
     background-size: cover;
@@ -195,7 +195,7 @@ section {
   }
 
   .contact-section {
-    background: linear-gradient(180deg, #fff3d6 0%, #fff8e1 100%);
+    background: linear-gradient(180deg, #faefdc 0%, #fff8ed 100%);
   }
 
   .contact-card {
@@ -207,12 +207,12 @@ section {
   }
 
   .form-field {
-    @apply w-full rounded-xl border border-[#ead5b3] bg-white px-4 py-3 text-temple-text outline-none transition-all duration-300 focus:border-[#f59e0b] focus:ring-2 focus:ring-[#fcd34d]/40;
+    @apply w-full rounded-xl border border-[#e5d0b0] bg-white px-4 py-3 text-temple-text outline-none transition-all duration-300 focus:border-[#c86b16] focus:ring-2 focus:ring-[#e2b95b]/30;
   }
 
   .submit-button {
     @apply rounded-xl px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105;
-    background-image: linear-gradient(45deg, #8b0000, #d97706, #ffd700);
+    background-image: linear-gradient(45deg, #7a1e1e, #c86b16, #e2b95b);
   }
 
   .footer-text {
@@ -229,7 +229,7 @@ section {
 
   .donate-float {
     @apply bottom-6 right-5 h-16 w-16 font-hindi text-sm;
-    background-image: linear-gradient(135deg, #8b0000, #d97706, #ffd700);
+    background-image: linear-gradient(135deg, #7a1e1e, #c86b16, #e2b95b);
     animation: templeHeartbeat 1.8s ease-in-out infinite;
   }
 
@@ -251,7 +251,7 @@ section {
   }
 
   .feature-kicker {
-    @apply text-xs font-semibold uppercase tracking-[0.24em] text-[#b45309];
+    @apply text-xs font-semibold uppercase tracking-[0.24em] text-[#a45a1f];
   }
 
   .feature-title {
@@ -265,7 +265,7 @@ section {
   .services-section {
     background:
       radial-gradient(circle at top right, rgba(255, 255, 255, 0.7), transparent 22%),
-      linear-gradient(180deg, rgba(255, 243, 214, 0.5) 0%, rgba(255, 248, 234, 0.86) 100%);
+      linear-gradient(180deg, rgba(250, 241, 222, 0.6) 0%, rgba(255, 248, 237, 0.9) 100%);
   }
 
   .service-shell {
@@ -276,23 +276,23 @@ section {
   }
 
   .service-copy {
-    color: #5f4a33;
+    color: #654f3b;
   }
 
   .service-panel .sub-heading,
   .service-row span:last-child {
-    color: #5a1905;
+    color: #5d2411;
   }
 }
 
 @keyframes templePulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 10px 26px rgba(139, 0, 0, 0.22);
+    box-shadow: 0 10px 26px rgba(122, 30, 30, 0.22);
   }
   50% {
     transform: scale(1.03);
-    box-shadow: 0 16px 38px rgba(255, 215, 0, 0.32);
+    box-shadow: 0 16px 38px rgba(226, 185, 91, 0.32);
   }
 }
 
@@ -340,4 +340,144 @@ section {
   .navratri-card {
     @apply text-base;
   }
+}
+
+@layer components {
+  .admin-shell {
+    @apply min-h-screen bg-[#f6f2e8] lg:grid lg:grid-cols-[280px_minmax(0,1fr)];
+  }
+
+  .admin-sidebar {
+    @apply sticky top-0 hidden h-screen overflow-y-auto bg-[linear-gradient(180deg,#431515_0%,#642020_55%,#8a4d16_100%)] px-5 py-6 lg:block;
+  }
+
+  .admin-brand {
+    @apply rounded-[1.75rem] border border-white/10 bg-white/10 p-5 backdrop-blur-lg;
+  }
+
+  .admin-sidebar-link {
+    @apply flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium text-white/85 transition-all duration-300 hover:bg-white/10 hover:text-white;
+  }
+
+  .admin-sidebar-link-active {
+    @apply bg-white text-[#6b1607] shadow-lg;
+  }
+
+  .admin-topbar {
+    @apply sticky top-0 z-20 mb-6 flex flex-col gap-4 border-b border-[#eadfca] bg-[#f6f2e8]/90 px-4 py-5 backdrop-blur md:flex-row md:items-center md:justify-between md:px-6;
+  }
+
+  .admin-card {
+    @apply relative rounded-[1.75rem] border border-[#eadfca] bg-white p-5 shadow-[0_20px_60px_rgba(84,44,12,0.08)] md:p-6;
+  }
+
+  .admin-hero {
+    @apply flex flex-col gap-6 rounded-[2rem] bg-[radial-gradient(circle_at_top_right,rgba(255,215,0,0.25),transparent_28%),linear-gradient(135deg,#4a0f0f_0%,#7a1c1c_48%,#ad4f12_100%)] p-6 shadow-2xl md:p-8 xl:flex-row xl:items-end xl:justify-between;
+  }
+
+  .admin-input {
+    @apply w-full rounded-2xl border border-[#e6d8bf] bg-white px-4 py-3 text-slate-800 outline-none transition-all duration-200 focus:border-[#d97706] focus:ring-4 focus:ring-[#f59e0b]/15;
+  }
+
+  .admin-search {
+    @apply block min-w-[220px];
+  }
+
+  .admin-button-primary {
+    @apply inline-flex items-center rounded-2xl bg-[linear-gradient(135deg,#8b0000,#d97706,#f3c43c)] px-4 py-3 text-sm font-semibold text-white shadow-lg transition-transform duration-200 hover:scale-[1.02];
+  }
+
+  .admin-button-secondary {
+    @apply inline-flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-colors duration-200 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .admin-button-danger {
+    @apply inline-flex items-center rounded-2xl bg-red-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-red-700;
+  }
+
+  .admin-icon-button {
+    @apply inline-flex items-center rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-colors duration-200 hover:bg-slate-50;
+  }
+
+  .admin-badge {
+    @apply rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-[0.18em];
+  }
+
+  .admin-badge-live {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .admin-badge-partial {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .admin-badge-pending {
+    @apply bg-slate-200 text-slate-600;
+  }
+
+  .admin-status-pill {
+    @apply inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-800;
+  }
+
+  .admin-status-pill-active {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .admin-status-pill-inactive {
+    @apply bg-slate-200 text-slate-600;
+  }
+
+  .admin-tab {
+    @apply rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition-colors duration-200 hover:bg-slate-50;
+  }
+
+  .admin-tab-active {
+    @apply border-[#8b0000] bg-[#8b0000] text-white;
+  }
+
+  .admin-stat-glow {
+    @apply absolute right-0 top-0 h-24 w-24 rounded-full opacity-40 blur-3xl;
+  }
+
+  .admin-stat-gold {
+    @apply bg-amber-300;
+  }
+
+  .admin-stat-maroon {
+    @apply bg-red-300;
+  }
+
+  .admin-stat-sun {
+    @apply bg-orange-300;
+  }
+
+  .admin-stat-forest {
+    @apply bg-emerald-300;
+  }
+}
+
+html[data-admin-theme="dark"] .admin-shell {
+  background: #140f0b;
+}
+
+html[data-admin-theme="dark"] .admin-topbar {
+  background: rgba(20, 15, 11, 0.88);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-admin-theme="dark"] .admin-card,
+html[data-admin-theme="dark"] .admin-input,
+html[data-admin-theme="dark"] .admin-button-secondary,
+html[data-admin-theme="dark"] .admin-icon-button {
+  background: #221913;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #f6efe2;
+}
+
+html[data-admin-theme="dark"] .admin-topbar h1,
+html[data-admin-theme="dark"] .admin-card h2,
+html[data-admin-theme="dark"] .admin-card p,
+html[data-admin-theme="dark"] table,
+html[data-admin-theme="dark"] .admin-input {
+  color: #f8f1e7;
 }

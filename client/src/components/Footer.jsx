@@ -1,4 +1,4 @@
-import { siteContent } from "../content";
+import { contactInfo, siteContent } from "../content";
 
 export default function Footer() {
   return (
@@ -21,6 +21,7 @@ export default function Footer() {
             <ul className="space-y-2 font-display text-base">
               <li><a className="footer-link" href="/#about">मंदिर के बारे में</a></li>
               <li><a className="footer-link" href="/#services">सेवाएँ</a></li>
+              <li><a className="footer-link" href="/gallery">गैलरी</a></li>
               <li><a className="footer-link" href="/events">कार्यक्रम</a></li>
               <li><a className="footer-link" href="/donation">दान करें</a></li>
               <li><a className="footer-link" href="/contact">संपर्क करें</a></li>
@@ -32,13 +33,13 @@ export default function Footer() {
             </h5>
             <p className="footer-text">पेंड्रा, छत्तीसगढ़</p>
             <p className="footer-text">
-              <a className="footer-link" href={siteContent.phoneHref}>
-                {siteContent.phone}
+              <a className="footer-link" href={contactInfo.phoneHref}>
+                {contactInfo.phone}
               </a>
             </p>
             <p className="footer-text">
-              <a className="footer-link" href={`mailto:${siteContent.email}`}>
-                {siteContent.email}
+              <a className="footer-link" href={`mailto:${contactInfo.email}`}>
+                {contactInfo.email}
               </a>
             </p>
           </div>

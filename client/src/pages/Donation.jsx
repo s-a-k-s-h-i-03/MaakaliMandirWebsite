@@ -1,7 +1,5 @@
-import ContactForm from "../components/ContactForm";
+import DonationForm from "../components/DonationForm";
 
 export default function Donation() {
-  return (
-    <ContactForm title="दान विवरण दर्ज करें" subtitle="व्यक्तिगत जानकारी" />
-  );
+  return <DonationForm />;
 }

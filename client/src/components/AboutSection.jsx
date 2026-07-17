@@ -34,8 +34,7 @@ export default function AboutSection() {
                 <div className="rounded-3xl border border-temple-gold/20 bg-[#fff9ef] p-6 shadow-temple">
                   <span className="feature-kicker">मंदिर अनुभूति</span>
                   <p className="mt-4 font-display text-lg leading-8 text-slate-700">
-                    शांत वातावरण, पारंपरिक आस्था और नवरात्रि की गरिमा इस तीर्थ को
-                    भक्तों के लिए विशिष्ट बनाती है।
+                    शांत वातावरण, पारंपरिक आस्था और नवरात्रि की गरिमा इस तीर्थ को भक्तों के लिए विशिष्ट बनाती है।
                   </p>
                 </div>
               </div>
@@ -55,8 +54,7 @@ export default function AboutSection() {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="rounded-[1.5rem] border border-white/15 bg-black/25 p-5 backdrop-blur-sm">
                   <p className="font-display text-base leading-7 text-white/90">
-                    दर्शन, सेवा और साधना के लिए एक गरिमामय परिसर जहाँ परंपरा और
-                    समर्पण साथ चलते हैं।
+                    दर्शन, सेवा और साधना के लिए एक गरिमामय परिसर जहाँ परंपरा और समर्पण साथ चलते हैं।
                   </p>
                 </div>
               </div>

@@ -1,9 +1,10 @@
 import { Navigate } from "react-router-dom";
+import { useAdminAuth } from "../admin/Context/AdminAuthContext";
 
 export default function ProtectedRoute({ children }) {
-  const token = localStorage.getItem("token");
+  const { isAuthenticated } = useAdminAuth();
 
-  if (!token) {
+  if (!isAuthenticated) {
     return <Navigate to="/admin/login" replace />;
   }
 
