@@ -3,7 +3,7 @@ import HeroSlider from "../components/HeroSlider";
 import Services from "../components/Services";
 import EventsSection from "../components/EventsSection";
 import AboutSection from "../components/AboutSection";
-import { siteContent } from "../content";
+import { contactInfo } from "../content";
 
 const highlights = [
   {
@@ -45,7 +45,7 @@ export default function Home() {
         दान
       </a>
       <a
-        href={siteContent.whatsappHref}
+        href={contactInfo.whatsappHref}
         className="floating-btn whatsapp-float"
         title="WhatsApp"
         target="_blank"

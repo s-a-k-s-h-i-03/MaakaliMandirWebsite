@@ -42,8 +42,7 @@ export default function HeroSlider() {
           <div className="hero-side-note">
             <span className="feature-kicker text-temple-gold">आध्यात्मिक केंद्र</span>
             <p className="mt-4 font-display text-lg leading-8 text-white/90">
-              नवरात्रि आयोजन, पारंपरिक संस्कार और भक्तों के लिए शांत, गरिमामय
-              मंदिर अनुभव।
+              नवरात्रि आयोजन, पारंपरिक संस्कार और भक्तों के लिए शांत, गरिमामय मंदिर अनुभव।
             </p>
           </div>
         </div>

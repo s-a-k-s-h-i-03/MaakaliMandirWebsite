@@ -5,13 +5,14 @@ import { siteContent } from "../content";
 const homeSectionLinks = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" }
+  { label: "Services", href: "/#services" },
 ];
 
 const routeLinks = [
   { label: "Events", to: "/events" },
+  { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
-  { label: "Donation", to: "/donation" }
+  { label: "Donation", to: "/donation" },
 ];
 
 export default function Navbar() {

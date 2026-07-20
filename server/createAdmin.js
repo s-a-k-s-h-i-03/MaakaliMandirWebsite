@@ -1,19 +1,11 @@
-import bcrypt from "bcryptjs";
-import mysql from "mysql2/promise";
+import "./config/env.js";
+import { createAdminUser } from "./models/AdminModel.js";
+import { hashPassword } from "./services/authService.js";
+import { logger } from "./utils/logger.js";
 
-const db = await mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "maakalisonkundgpm"
-});
+const hashed = await hashPassword("admin123");
 
-const hashed = await bcrypt.hash("admin123", 10);
+await createAdminUser("admin", hashed);
 
-await db.execute(
-  "INSERT INTO admin_users(username, password) VALUES (?, ?)",
-  ["admin", hashed]
-);
-
-console.log("Admin created");
+logger.info("Admin created");
 process.exit();

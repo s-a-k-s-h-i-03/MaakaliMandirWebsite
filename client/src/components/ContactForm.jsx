@@ -8,35 +8,54 @@ const emptyForm = {
   udf3: "",
   udf4: "",
   headid: "",
-  amount: ""
+  amount: "",
 };
 
 export default function ContactForm({
   title = "कलश की जानकारी दर्ज कराएं",
-  subtitle = "व्यक्तिगत जानकारी"
+  subtitle = "व्यक्तिगत जानकारी",
 }) {
   const [form, setForm] = useState(emptyForm);
   const [heads, setHeads] = useState([]);
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [loadingHeads, setLoadingHeads] = useState(true);
+  const [headsError, setHeadsError] = useState("");
 
   useEffect(() => {
     let mounted = true;
 
-    axios.get(`${apiBaseUrl}/api/pay-heads`).then(({ data }) => {
-      if (!mounted) {
-        return;
-      }
+    axios.get(`${apiBaseUrl}/api/pay-heads`)
+      .then(({ data }) => {
+        if (!mounted) {
+          return;
+        }
 
-      setHeads(data.items || []);
-      if (data.items?.length) {
-        setForm((current) => ({
-          ...current,
-          headid: current.headid || data.items[0].headid,
-          amount: current.amount || String(data.items[0].rate ?? "")
-        }));
-      }
-    });
+        const items = Array.isArray(data.items) ? data.items : [];
+        setHeads(items);
+        setHeadsError(items.length > 0 ? "" : "अभी कोई कलश विकल्प उपलब्ध नहीं है।");
+
+        if (items.length > 0) {
+          setForm((current) => ({
+            ...current,
+            headid: current.headid || items[0].headid,
+            amount: current.amount || String(items[0].rate ?? ""),
+          }));
+        }
+      })
+      .catch((error) => {
+        if (!mounted) {
+          return;
+        }
+
+        setHeads([]);
+        setHeadsError(error.response?.data?.message || "कलश विकल्प लोड नहीं हो सके।");
+      })
+      .finally(() => {
+        if (mounted) {
+          setLoadingHeads(false);
+        }
+      });
 
     return () => {
       mounted = false;
@@ -51,7 +70,7 @@ export default function ContactForm({
       setForm((current) => ({
         ...current,
         headid: value,
-        amount: selectedHead ? String(selectedHead.rate ?? "") : current.amount
+        amount: selectedHead ? String(selectedHead.rate ?? "") : current.amount,
       }));
       return;
     }
@@ -70,11 +89,14 @@ export default function ContactForm({
       setForm((current) => ({
         ...emptyForm,
         headid: current.headid,
-        amount: current.amount
+        amount: current.amount,
       }));
     } catch (error) {
+      const errors = error.response?.data?.errors;
       setMessage(
-        error.response?.data?.message || "फॉर्म जमा नहीं हो सका। कृपया फिर प्रयास करें।"
+        Array.isArray(errors) && errors.length > 0
+          ? errors[0]
+          : (error.response?.data?.message || "फॉर्म जमा नहीं हो सका। कृपया फिर प्रयास करें।"),
       );
     } finally {
       setSubmitting(false);
@@ -158,14 +180,27 @@ export default function ContactForm({
                 className="form-field"
                 value={form.headid}
                 onChange={handleChange}
+                disabled={loadingHeads || heads.length === 0}
                 required
               >
+                <option value="" disabled>
+                  {loadingHeads
+                    ? "Loading kalash types..."
+                    : heads.length > 0
+                      ? "Select a kalash type"
+                      : "No kalash types available"}
+                </option>
                 {heads.map((head) => (
                   <option key={head.headid} value={head.headid}>
-                    {head.PartyName} - {head.rate}
+                    {head.PartyName} - ₹{head.rate}
                   </option>
                 ))}
               </select>
+              {headsError ? (
+                <p className="mt-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
+                  {headsError}
+                </p>
+              ) : null}
             </div>
             <div>
               <label className="form-label" htmlFor="amount">
@@ -182,7 +217,7 @@ export default function ContactForm({
                 required
               />
             </div>
-            <button className="submit-button" type="submit" disabled={submitting}>
+            <button className="submit-button" type="submit" disabled={submitting || heads.length === 0}>
               {submitting ? "Submitting..." : "Submit"}
             </button>
             {message ? (

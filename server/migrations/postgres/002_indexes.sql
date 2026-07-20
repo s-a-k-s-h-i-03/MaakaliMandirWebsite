@@ -1,0 +1,12 @@
+CREATE UNIQUE INDEX IF NOT EXISTS ux_donations_receipt_no ON donations (receipt_no);
+CREATE UNIQUE INDEX IF NOT EXISTS ux_donations_order_id ON donations (order_id);
+CREATE INDEX IF NOT EXISTS ix_donations_head_id ON donations (head_id);
+CREATE INDEX IF NOT EXISTS ix_donations_status ON donations (payment_status);
+CREATE INDEX IF NOT EXISTS ix_donations_created_at ON donations (created_at DESC);
+CREATE INDEX IF NOT EXISTS ix_payment_logs_donation_id ON payment_logs (donation_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS ix_events_event_date ON events (event_date DESC);
+CREATE INDEX IF NOT EXISTS ix_gallery_featured ON gallery (featured, display_order, created_at DESC);
+CREATE INDEX IF NOT EXISTS ix_gallery_category ON gallery (category, status);
+CREATE INDEX IF NOT EXISTS ix_services_status_order ON services (status, display_order, created_at DESC);
+CREATE INDEX IF NOT EXISTS ix_payeedetail_headid ON payeedetail (headid);
+CREATE INDEX IF NOT EXISTS ix_payeedetail_orderid ON payeedetail (orderid);

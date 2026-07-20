@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-
-const apiBaseUrl = "http://localhost:5000";
+import { getEvents } from "../admin/Services/eventService";
+import { resolveMediaUrl } from "../utils/media";
 
 const getEventDescription = (description) => {
   if (!description || description === "null") {
@@ -16,31 +15,22 @@ const getEventDate = (date) => {
     return "";
   }
 
-  return new Date(date).toLocaleDateString();
-};
-
-const getEventImageUrl = (image) => {
-  if (!image || !image.startsWith("/uploads/")) {
-    return "";
-  }
-
-  return `${apiBaseUrl}${image}`;
+  return new Date(date).toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
 };
 
 export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log("EVENT PAGE LOADED");
-
   useEffect(() => {
     const fetchEvents = async () => {
-      console.log("FETCH START");
-
       try {
-        const res = await axios.get(`${apiBaseUrl}/api/events`);
-        console.log("API RESPONSE:", res.data);
-        setEvents(res.data);
+        const data = await getEvents();
+        setEvents(data);
       } catch (err) {
         console.error("API ERROR:", err);
       } finally {
@@ -62,10 +52,6 @@ export default function Events() {
           </p>
         </div>
 
-        <pre className="mb-6 overflow-auto rounded-xl bg-white p-4 text-left text-xs text-slate-600 shadow-md">
-          {JSON.stringify(events, null, 2)}
-        </pre>
-
         {loading ? (
           <div className="rounded-xl bg-white p-8 text-center shadow-md">
             Loading events...
@@ -81,24 +67,28 @@ export default function Events() {
                 key={event.id}
                 className="overflow-hidden rounded-xl bg-white shadow-md transition hover:shadow-xl"
               >
-                {getEventImageUrl(event.image) ? (
+                {resolveMediaUrl(event.image) ? (
                   <img
-                    src={getEventImageUrl(event.image)}
+                    src={resolveMediaUrl(event.image)}
                     alt={event.title}
-                    className="h-48 w-full object-cover"
+                    className="h-56 w-full object-cover"
                   />
                 ) : null}
 
-                <div className="space-y-3 p-5">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-[#b45309]">
-                    {getEventDate(event.date)}
-                  </p>
+                <div className="space-y-4 p-5">
+                  <div className="flex flex-wrap items-center gap-3 text-sm font-semibold uppercase tracking-wide text-[#b45309]">
+                    <span>{getEventDate(event.event_date || event.date)}</span>
+                    {event.location ? <span className="rounded-full bg-amber-100 px-3 py-1 text-[11px] text-amber-800">{event.location}</span> : null}
+                  </div>
                   <h2 className="font-display text-2xl font-semibold text-temple-maroon">
                     {event.title}
                   </h2>
                   <p className="font-display text-base leading-7 text-slate-600">
                     {getEventDescription(event.description)}
                   </p>
+                  <button type="button" className="rounded-xl border border-[#eed3a5] px-4 py-2 text-sm font-semibold text-temple-maroon transition hover:bg-[#fff4dc]">
+                    Read More
+                  </button>
                 </div>
               </article>
             ))}

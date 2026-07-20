@@ -4,16 +4,21 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed:admin": "node createAdmin.js",
+    "migrate:mysql-to-postgres": "node scripts/mysql-to-postgres.js",
+    "validate:postgres-migration": "node scripts/validate-postgres-migration.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "json2csv": "^6.0.0-alpha.2",
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.1.1",
-    "mysql2": "^3.14.1"
+    "mysql2": "^3.14.1",
+    "pg": "^8.16.3"
   }
 }
