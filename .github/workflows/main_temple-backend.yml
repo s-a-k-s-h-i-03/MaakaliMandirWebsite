@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: temple-backend
           slot-name: Production
-          package: ./server
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_725171FB290A4FC1A5CCEFC045DA5701 }}
