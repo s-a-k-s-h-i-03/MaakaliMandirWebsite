@@ -54,7 +54,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: temple-backend
+          app-name: temple-web-backend
           slot-name: Production
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_725171FB290A4FC1A5CCEFC045DA5701 }}
