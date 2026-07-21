@@ -3,7 +3,7 @@ import { apiBaseUrl } from "../../content";
 import { clearStoredToken, getStoredToken, isTokenExpired } from "../Utils/auth";
 
 export const adminApi = axios.create({
-  baseURL: apiBaseUrl || "http://localhost:5000",
+  baseURL: apiBaseUrl,
 });
 
 adminApi.interceptors.request.use((config) => {

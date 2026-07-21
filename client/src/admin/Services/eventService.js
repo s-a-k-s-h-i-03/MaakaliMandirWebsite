@@ -3,7 +3,7 @@ import { apiBaseUrl } from "../../content";
 import { adminApi } from "./api";
 
 const publicApi = axios.create({
-  baseURL: apiBaseUrl || "http://localhost:5000",
+  baseURL: apiBaseUrl,
 });
 
 function createFormData(payload) {

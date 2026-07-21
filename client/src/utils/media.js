@@ -1,6 +1,6 @@
 import { apiBaseUrl } from "../content";
 
-const backendBaseUrl = apiBaseUrl || "http://localhost:5000";
+const backendBaseUrl = apiBaseUrl;
 
 export function resolveMediaUrl(path) {
   if (!path) {

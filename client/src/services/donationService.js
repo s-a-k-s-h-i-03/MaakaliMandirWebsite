@@ -3,7 +3,7 @@ import { apiBaseUrl } from "../content";
 import { adminApi } from "../admin/Services/api";
 
 const publicApi = axios.create({
-  baseURL: apiBaseUrl || "http://localhost:5000",
+  baseURL: apiBaseUrl,
 });
 
 export async function getDonationHeads() {

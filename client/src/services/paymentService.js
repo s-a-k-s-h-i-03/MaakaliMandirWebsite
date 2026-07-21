@@ -2,7 +2,7 @@ import axios from "axios";
 import { apiBaseUrl } from "../content";
 
 const publicApi = axios.create({
-  baseURL: apiBaseUrl || "http://localhost:5000",
+  baseURL: apiBaseUrl,
 });
 
 export async function createPaymentOrder(payload) {

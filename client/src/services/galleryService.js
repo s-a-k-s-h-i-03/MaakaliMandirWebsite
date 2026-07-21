@@ -14,7 +14,7 @@ export const galleryCategories = [
 ];
 
 const publicApi = axios.create({
-  baseURL: apiBaseUrl || "http://localhost:5000",
+  baseURL: apiBaseUrl,
 });
 
 function appendMaybeArray(formData, key, value) {
